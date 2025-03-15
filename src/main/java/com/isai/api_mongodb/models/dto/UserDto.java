@@ -1,10 +1,5 @@
-package com.isai.api_mongodb.models;
+package com.isai.api_mongodb.models.dto;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.mongodb.lang.NonNull;
-
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,13 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "users")
-public class User {
-
-    @Id
-    @NonNull
+public class UserDto {
     private Integer userId;
-
     private String imagePath;
     private String firstName;
     private String lastName;
