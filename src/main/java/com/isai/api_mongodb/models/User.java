@@ -1,10 +1,10 @@
 package com.isai.api_mongodb.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.mongodb.lang.NonNull;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class User {
 
     @Id
     @NonNull
-    private Integer userId;
+    private String userId;
 
     private String imagePath;
     private String firstName;
