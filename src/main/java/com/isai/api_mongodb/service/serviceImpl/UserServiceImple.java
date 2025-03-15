@@ -3,14 +3,17 @@ package com.isai.api_mongodb.service.serviceImpl;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.isai.api_mongodb.models.User;
 import com.isai.api_mongodb.models.dto.UserDto;
 import com.isai.api_mongodb.repository.UserRepository;
 import com.isai.api_mongodb.service.CrudService;
 
+@Service
 public class UserServiceImple
         implements CrudService<UserDto> {
 
@@ -65,11 +68,16 @@ public class UserServiceImple
 
     @Override
     public List<UserDto> findAllUsers() {
-        return repository.findAll()
-                .stream()
-                .map(user -> new UserDto(user.getUserId(), user.getImagePath(), user.getFirstName(), user.getLastName(),
+        List<User> users = repository.findAll();
+        System.out.println("Usuarios encontrados: " + users.size());
+        return users.stream()
+                .map(user -> new UserDto(
+                        user.getUserId(),
+                        user.getImagePath(),
+                        user.getFirstName(),
+                        user.getLastName(),
                         user.getDepartamento()))
-                .toList();
+                .collect(Collectors.toList());
     }
 
 }
